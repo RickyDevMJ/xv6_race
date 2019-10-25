@@ -6,8 +6,10 @@
 #include "memlayout.h"
 #include "mmu.h"
 #include "proc.h"
+#include "spinlock.h"
 
 int counter = 0;
+struct spinlock lock={.name="counter",.locked=0,.cpu=0};
 
 int
 sys_fork(void)
@@ -115,3 +117,17 @@ sys_counter_set(void)
   counter=n;
   return 0;
 }
+
+int 
+sys_my_lock(void)
+{
+  acquire(&lock);
+  return 0;
+} 
+
+int 
+sys_my_unlock(void)
+{
+  release(&lock);
+  return 0;
+} 
