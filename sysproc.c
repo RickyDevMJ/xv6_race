@@ -7,6 +7,8 @@
 #include "mmu.h"
 #include "proc.h"
 
+int counter = 0;
+
 int
 sys_fork(void)
 {
@@ -88,4 +90,28 @@ sys_uptime(void)
   xticks = ticks;
   release(&tickslock);
   return xticks;
+}
+
+int
+sys_counter_init(void)
+{
+  counter=0;
+  return 0;
+}
+
+int 
+sys_counter_get(void)
+{
+  return counter;
+}
+
+int 
+sys_counter_set(void)
+{
+  int n;
+
+  if(argint(0, &n) < 0)
+    return -1;
+  counter=n;
+  return 0;
 }

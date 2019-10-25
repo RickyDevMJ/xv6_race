@@ -23,6 +23,9 @@ int getpid(void);
 char* sbrk(int);
 int sleep(int);
 int uptime(void);
+int counter_init(void);
+int counter_get(void);
+int counter_set(int);
 
 // ulib.c
 int stat(const char*, struct stat*);
