@@ -2,7 +2,7 @@
 #include "stat.h"
 #include "user.h"
 
-#define N 100
+#define N 10000
 
 void
 race_lock(void)
@@ -11,10 +11,7 @@ race_lock(void)
 
   counter_init();
   pid = fork(); 
-  if(pid != 0)
-  {
-    sleep(10);
-  }
+  
   for(n=0;n<N;n++){
     my_lock();
     c = counter_get();

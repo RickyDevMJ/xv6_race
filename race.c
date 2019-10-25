@@ -2,7 +2,7 @@
 #include "stat.h"
 #include "user.h"
 
-#define N 1000
+#define N 10000
 
 void
 race(void)
