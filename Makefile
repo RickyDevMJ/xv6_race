@@ -16,6 +16,7 @@ OBJS = \
 	pipe.o\
 	proc.o\
 	sleeplock.o\
+	futex.o\
 	spinlock.o\
 	string.o\
 	swtch.o\
@@ -183,6 +184,7 @@ UPROGS=\
 	_zombie\
 	_race\
 	_race_lock\
+	_race_futex\
 
 fs.img: mkfs README $(UPROGS)
 	./mkfs fs.img README $(UPROGS)
@@ -252,7 +254,7 @@ qemu-nox-gdb: fs.img xv6.img .gdbinit
 EXTRA=\
 	mkfs.c ulib.c user.h cat.c echo.c forktest.c grep.c kill.c\
 	ln.c ls.c mkdir.c rm.c stressfs.c usertests.c wc.c zombie.c\
-	race.c race_lock.c\
+	race.c race_lock.c race_futex.c\
 	printf.c umalloc.c\
 	README dot-bochsrc *.pl toc.* runoff runoff1 runoff.list\
 	.gdbinit.tmpl gdbutil\
