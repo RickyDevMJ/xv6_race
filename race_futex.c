@@ -5,7 +5,7 @@
 #define N 10000
 
 void
-race_lock(void)
+race_futex(void)
 {
   int n, pid, c, t1, t2;
 
@@ -14,10 +14,10 @@ race_lock(void)
   pid = fork(); 
   
   for(n=0;n<N;n++){
-    my_lock();
+    my_futex_lock();
     c = counter_get();
     counter_set(c+1);
-    my_unlock();
+    my_futex_unlock();
   }
 
   if(pid > 0)
@@ -32,6 +32,6 @@ race_lock(void)
 int
 main(void)
 {
-  race_lock();
+  race_futex();
   exit();
 }

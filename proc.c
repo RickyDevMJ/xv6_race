@@ -39,8 +39,8 @@ mycpu(void)
 {
   int apicid, i;
   
-  if(readeflags()&FL_IF)
-    panic("mycpu called with interrupts enabled\n");
+  //if(readeflags()&FL_IF)
+    //panic("mycpu called with interrupts enabled\n");
   
   apicid = lapicid();
   // APIC IDs are not guaranteed to be contiguous. Maybe we should have
@@ -370,8 +370,8 @@ sched(void)
 
   if(!holding(&ptable.lock))
     panic("sched ptable.lock");
-  //if(mycpu()->ncli != 1)
-    //panic("sched locks");
+  if(mycpu()->ncli != 1)
+    panic("sched locks");
   if(p->state == RUNNING)
     panic("sched running");
   if(readeflags()&FL_IF)

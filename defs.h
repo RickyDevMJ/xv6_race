@@ -126,6 +126,10 @@ void            swtch(struct context**, struct context*);
 
 // spinlock.c
 void            acquire(struct spinlock*);
+void            l_acquire(struct spinlock*);
+void            l_release(struct spinlock*);
+void            f_acquire(struct spinlock*);
+void            f_release(struct spinlock*);
 void            getcallerpcs(void*, uint*);
 int             holding(struct spinlock*);
 void            initlock(struct spinlock*, char*);

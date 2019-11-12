@@ -34,3 +34,6 @@ SYSCALL(counter_get)
 SYSCALL(counter_set)
 SYSCALL(my_lock)
 SYSCALL(my_unlock)
+SYSCALL(my_futex_lock)
+SYSCALL(my_futex_unlock)
+
