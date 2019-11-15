@@ -108,8 +108,8 @@ extern int sys_counter_get(void);
 extern int sys_counter_set(void);
 extern int sys_my_lock(void);
 extern int sys_my_unlock(void);
-extern int sys_my_f_lock(void);
-extern int sys_my_f_unlock(void);
+extern int sys_my_futex_lock(void);
+extern int sys_my_futex_unlock(void);
 
 static int (*syscalls[])(void) = {
 [SYS_fork]    sys_fork,
@@ -138,8 +138,8 @@ static int (*syscalls[])(void) = {
 [SYS_counter_set]   sys_counter_set,
 [SYS_my_lock]	    sys_my_lock,
 [SYS_my_unlock]	    sys_my_unlock,
-[SYS_my_f_lock]	    sys_my_f_lock,
-[SYS_my_f_unlock]	    sys_my_f_unlock,
+[SYS_my_futex_lock]	    sys_my_futex_lock,
+[SYS_my_futex_unlock]	    sys_my_futex_unlock,
 };
 
 void

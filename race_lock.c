@@ -7,9 +7,10 @@
 void
 race_lock(void)
 {
-  int n, pid, c;
+  int n, pid, c, t1, t2;
 
   counter_init();
+  t1 = uptime();
   pid = fork(); 
   
   for(n=0;n<N;n++){
@@ -22,6 +23,8 @@ race_lock(void)
   if(pid > 0)
   {
     wait();
+    t2 = uptime();
+    printf(1, "Time taken = %d\n", t2-t1);
   }
   printf(1,"%d\n",counter_get());
 }

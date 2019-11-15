@@ -123,27 +123,27 @@ sys_counter_set(void)
 int 
 sys_my_lock(void)
 {
-  acquire(&lock);
+  l_acquire(&lock);
   return 0;
 } 
 
 int 
 sys_my_unlock(void)
 {
-  release(&lock);
+  l_release(&lock);
   return 0;
 } 
 
 int 
-sys_my_f_lock(void)
+sys_my_futex_lock(void)
 {
-  f_acquire(&f_lock);
+  f_acquire(&lock);
   return 0;
 } 
 
 int 
-sys_my_f_unlock(void)
+sys_my_futex_unlock(void)
 {
-  f_release(&f_lock);
+  f_release(&lock);
   return 0;
 } 
