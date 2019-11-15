@@ -18,7 +18,6 @@ race_futex(void)
     c = counter_get();
     counter_set(c+1);
     my_futex_unlock();
-  }
 
   if(pid > 0)
   {

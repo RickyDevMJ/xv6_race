@@ -36,4 +36,3 @@ SYSCALL(my_lock)
 SYSCALL(my_unlock)
 SYSCALL(my_futex_lock)
 SYSCALL(my_futex_unlock)
-

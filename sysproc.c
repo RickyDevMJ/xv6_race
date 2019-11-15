@@ -7,9 +7,11 @@
 #include "mmu.h"
 #include "proc.h"
 #include "spinlock.h"
+#include "futex.h"
 
 int counter = 0;
 struct spinlock lock={.name="counter",.locked=0,.cpu=0};
+struct futex f_lock={.name="counter",.locked=0,.cpu=0};
 
 int
 sys_fork(void)
